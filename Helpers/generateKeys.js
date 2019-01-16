@@ -4,7 +4,7 @@ openpgp.initWorker({ path:'openpgp.worker.js' });
 
 console.log("Initialized");
 var options = {
-    userIds: [{ name:'Brian Denicola', email:'brdenico@microsoft.com' }],
+    userIds: [{ name:'Brian Denicola', email:'bjd@sample.com' }],
     passphrase: 'password123'
 };
 
@@ -14,14 +14,14 @@ openpgp.generateKey(options).then(function(key) {
     var pubkey = key.publicKeyArmored;   
     console.log("Public Key" + pubkey);
 
-    fs.writeFile("./brian.pub", pubkey, function(err) {
+    fs.writeFile("./keys/brian.pub", pubkey, function(err) {
         if(err) {
             return console.log(err);
         }
         console.log("The file was saved!");
     }); 
 
-    fs.writeFile("./brian.key", privkey, function(err) {
+    fs.writeFile("./keys/brian.key", privkey, function(err) {
         if(err) {
             return console.log(err);
         }

@@ -4,9 +4,9 @@ const fs = require('fs');
 const openpgp = require('openpgp'); 
 openpgp.initWorker({ path:'openpgp.worker.js' });
 
-var pubKey = fs.readFileSync('./brian.pub', 'utf8'); 
-var fileToEncrypt = fs.readFileSync('./sample.txt', 'utf8'); 
-var encrytedFile = './sample.txt.enc';
+var pubKey = fs.readFileSync('./keys/brian.pub', 'utf8'); 
+var fileToEncrypt = fs.readFileSync('./sample/sample.txt', 'utf8'); 
+var encrytedFile = './sample/sample.txt.enc';
 
 async function main() {
     const options = {
