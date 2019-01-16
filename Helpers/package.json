@@ -1,0 +1,14 @@
+{
+  "name": "encryptfile",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "encrypt": "node encryptFile.js",
+    "generate": "node generateKeys.js",
+    "decrypt": "node decryptFile.js"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "openpgp": "^4.4.5"
+  }
+}

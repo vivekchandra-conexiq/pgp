@@ -1,0 +1,19 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "name": "encryptedBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "samples-workitems/{name}",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "decryptedBlob",
+      "type": "blob",
+      "direction": "out",
+      "path": "sample-output/{name}",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
