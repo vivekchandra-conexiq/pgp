@@ -9,7 +9,7 @@ export pgpPassword=$5
 az login 
 az group create -n $RG -l $location
 
-funcStorageName=${functionAppName}sa001
+funcStorageName=${functionAppName}sa
 keyVaultName=${functionAppName}keyvault001
 
 # Create an Azure Function with storage accouunt in the resource group.
@@ -17,6 +17,11 @@ az storage account create --name $funcStorageName --location $location --resourc
 az functionapp create --name $functionAppName --storage-account $funcStorageName --consumption-plan-location $location --resource-group $RG
 az functionapp identity assign --name $functionAppName --resource-group $RG
 functionAppId="$(az functionapp identity show --name $functionAppName --resource-group $RG --query 'principalId' --output tsv)"
+
+#Ceate containers 
+key=$(az storage account keys list -n $funcStorageName --query "[0].value" -o tsv)
+az storage container create --name 'samples-workitems' --account-key $key --account-name $funcStorageName
+az storage container create --name 'sample-output' --account-key $key --account-name $funcStorageName
 
 # Create Key Vault 
 az keyvault create --name $keyVaultName --resource-group $RG --location $location 

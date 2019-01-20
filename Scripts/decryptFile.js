@@ -4,13 +4,14 @@ const fs = require('fs');
 const openpgp = require('openpgp'); 
 openpgp.initWorker({ path:'openpgp.worker.js' });
 
-var privKey = fs.readFileSync('./keys/brian.key', 'utf8'); 
-var fileToDecrypt = fs.readFileSync('./sample/sample.txt.enc', 'utf8'); 
-var decrytedFile = './sample/sample_decrypted.txt';
+var privKey = fs.readFileSync('./keys/sample.key', 'utf8'); 
+var fileToDecrypt = fs.readFileSync('./files/sample.txt.enc', 'utf8'); 
+var decrytedFile = './files/sample_decrypted.txt';
+var password = 'password123';
 
 async function main() {
     var privKeyObj = await openpgp.key.readArmored(privKey);
-    await privKeyObj.keys[0].decrypt('password123');
+    await privKeyObj.keys[0].decrypt(password);
 
     const options = {
         message: await openpgp.message.readArmored(fileToDecrypt),
