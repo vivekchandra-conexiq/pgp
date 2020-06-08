@@ -1,7 +1,7 @@
 # Open PGP with Azure Functions Blob Triggers
 This repository is a demo of how to use OpenPGP.js with Azure Functions to decrypt files placed in a Azure Blob container.  The function will trigger when a file is uploaded to the source container and the decrypted file will be placed in an output container. 
 
-git clone https://github.com/bjd145/OpenPGPwithAzureFunctions
+git clone https://github.com/briandenicola/azure-functions-openpgp
 
 # Setup
 ## PreReqs
